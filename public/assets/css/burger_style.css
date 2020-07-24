@@ -1,0 +1,25 @@
+body {
+    background-image: url(/assets/img/burger-background.jpg);
+}
+
+.container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.sub-container {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(238, 204, 153);
+    padding: 1.5em;
+}
+
+.form-container {
+    width: 33%;
+    margin-top: 1em;
+}
+
+.header {
+    text-align: center;
+}
+

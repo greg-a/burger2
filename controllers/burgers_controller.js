@@ -6,11 +6,11 @@ var db = require("../models");
 router.get("/", function(req, res){
     db.Burger.findAll({})
     .then(function(dbBurger){
-        var hbsObject = {
-            burgers: dbBurger
-        };
-        console.log(hbsObject);
-        res.render("index", hbsObject)
+        // var hbsObject = {
+        //     burgers: dbBurger
+        // };
+        console.log(dbBurger);
+        res.render("index", {burgers: dbBurger})
     })
 });
 
@@ -22,7 +22,6 @@ router.get("/api/burgers", function(req, res){
 });
 
 router.post("/api/burgers", function(req, res){
-    console.log(req.body);
         db.Burger.create({
             burger_name: req.body.burger
         })
@@ -31,12 +30,12 @@ router.post("/api/burgers", function(req, res){
             });
 });
 
-router.put("/api/burgers", function(req, res){
+router.put("/api/burgers/:id", function(req, res){
     db.Burger.update({
         devoured: req.body.devoured
     }, {
         where: {
-            id: req.body.id
+            id: req.params.id
         }
     }).then(function(dbBurger) {
         res.json(dbBurger);
